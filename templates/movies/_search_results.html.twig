@@ -1,0 +1,28 @@
+{% for movie in movies %}
+            <div class="text-center pt-8 pb-4">
+                <img src="{{ movie.imagePath }}" alt="" class="aspect-video object-cover shadow-xl rounded-md" />
+
+                <h2 class="text-gray-700 font-bold text-3xl py-2">
+                    {{ movie.title }}
+                </h2>
+
+                <span class="text-gray-500">
+                    By <span class="italic text-sm text-gray-800">{{ movie.getReviwer().getUsername() }} | {{ movie.getPublishDate()|date('d.m.Y') }}
+                </span>
+
+                <div class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
+                     
+                    <span class="mr-4 bg-cyan-800 text-white font-bold py-1 px-2 rounded mt-2">
+                    Comments {{ movie.comments|length }}
+                    </span>
+                    <span class="bg-cyan-800 text-white font-bold py-1 px-2 rounded mt-2">
+                    Likes
+                    {{ movie.reviewlikes|length }}
+                    </span>
+                </div>
+
+                <a href="/movie/{{ movie.slug }}" class="uppercase border transition-all border-cyan-900 text-gray-600 text-lg py-4 px-12 rounded  hover:bg-cyan-800 hover:text-white">
+                    Read Review
+                </a>
+            </div>
+{% endfor %}

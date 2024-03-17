@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+	<form method="post">
+
+		{# {% if app.user %}
+			<div class="mb-3">
+				You are logged in as
+				{{ app.user.email }},
+				<a href="{{ path('app_logout') }}">Logout</a>
+			</div>
+		{% endif %} #}
+
+		<div class="w-4/5 m-auto text-center">
+			<div>
+				<h1 class="text-6xl p-8">
+					Login
+				</h1>
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                
+				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="bg-transparent block mt-10 mx-auto border-b-2 w-2/5 h-20 text-2xl outline-none" placeholder="Email" autocomplete="email" autofocus>
+				<input type="password" name="password" id="inputPassword" class="bg-transparent block mt-10 mx-auto border-b-2 w-2/5 h-20 text-2xl outline-none" autocomplete="current-password" placeholder="Password">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                
+				<div class="checkbox mt-8">
+					<label>
+						Remember me
+						<input type="checkbox" name="_remember_me">
+					</label>
+				</div>
+
+				<button class="uppercase mt-15 bg-cyan-800 text-gray-100 text-lg w-1/5 mt-10 font-extrabold py-4 px-8 rounded-3xl" type="submit">
+					Login
+				</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+        <div class="w-4/5 m-auto text-center">
+            <h1 class="text-6xl p-8">
+                Login
+            </h1>
+        {% if error %}
+            <div class="text-red-800">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+            {{ form_start(form) }}
+            <div class="mb-8">
+                {{ form_row(form.email) }}
+            </div>
+            <div class="mb-8">
+                {{ form_row(form.password) }}
+            </div>
+            <div class="checkbox mt-8">
+                {{ form_row(form.remember_me) }}
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button class="uppercase mt-10 bg-cyan-800 text-gray-100 text-lg w-1/5 font-extrabold py-4 px-8 rounded-3xl" type="submit">
+                Login
+            </button>
+            {{ form_end(form) }}
+        </div>
+{% endblock %} #}

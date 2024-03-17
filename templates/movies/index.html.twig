@@ -1,0 +1,99 @@
+{% extends "./base.html.twig" %}
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endblock %}
+{% block body %}
+    <div class="w-4/5 m-auto text-center">
+        <div class="py-12 border-b border-gray-300">
+            <h4 class="font-light text-gray-500 italic">
+            {% if app.user %}
+                Welcome to MovieRewinder, {{ app.user.getUsername() }}.
+            {% else %}
+                Here, you'll find in-depth reviews, insightful discussions, and a vibrant community of fellow movie enthusiasts. Whether you're looking for recommendations, want to share your thoughts on the latest blockbusters, or dive deep into classic films, MovieRewinder is your go-to destination for all things movies.
+            {% endif %}
+            </h4>
+        </div>
+        <p id="reviews_count" class="text-4xl p-8">
+                Movie reviews ({{ movies|length }})
+        </p>
+    <!-- Search Module -->
+    <input type="text" id="searchInput" class="w-80 h-10 p-4 rounded-md bg-cyan-800 text-white placeholder-gray-300 outline-none" placeholder="Search reviews by movie title...">
+    </div>
+
+
+    {% if app.user and ('ROLE_REVIEWER' in app.user.getRoles()) %}
+        <div class="mx-auto w-4/5 my-8">
+        <a 
+            href="/movies/create" 
+            class="uppercase border border-cyan-900 transition-all text-lg py-4 px-6 rounded  bg-cyan-800 text-white hover:bg-white hover:text-cyan-800">
+            New Movie Review
+        </a>
+    </div>
+    {% endif %}
+    
+    <div id="movies_container" class="md:grid lg:grid-cols-3 gap-20 w-4/5 mx-auto py-15">
+        <!-- Review Item -->
+        {% for movie in movies %}
+            <div class="text-center pt-8 pb-4">
+                <img src="{{ movie.imagePath }}" alt="" class="aspect-video object-cover shadow-xl rounded-md" />
+
+                <h2 class="text-gray-700 font-bold text-3xl py-2">
+                    {{ movie.title }}
+                </h2>
+
+                <span class="text-gray-500">
+                    By <span class="italic text-sm text-gray-800">{{ movie.getReviwer().getUsername() }} | {{ movie.getPublishDate()|date('d.m.Y') }}
+                </span>
+
+                <div class="text-base text-gray-700 pt-4 pb-10 leading-8 font-light">
+                     
+                    <span class="mr-4 bg-cyan-800 text-white font-bold py-1 px-2 rounded mt-2">
+                    Comments {{ movie.comments|length }}
+                    </span>
+                    <span class="bg-cyan-800 text-white font-bold py-1 px-2 rounded mt-2">
+                    Likes
+                    {{ movie.reviewlikes|length }}
+                    </span>
+                </div>
+
+                <a href="/movie/{{ movie.slug }}" class="uppercase border transition-all border-cyan-900 text-gray-600 text-lg py-4 px-12 rounded  hover:bg-cyan-800 hover:text-white">
+                    Read Review
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+        <div id="searchResults" class="hidden md:grid lg:grid-cols-3 gap-20 w-4/5 mx-auto py-15">
+        </div>
+    <script>
+    $(document).ready(function() {
+    $('#searchInput').on('input', function() {
+        function updateReviewsCount(text) {
+            $('#reviews_count').html(text);
+        }
+
+        var query = $(this).val().trim();
+        if (query.length >= 1) {
+            $.ajax({
+                url: '{{ path('search_movies') }}',
+                method: 'GET',
+                data: { query: query },
+                success: function(response) {
+                    $('#movies_container').hide(); // Hide the movies container
+                    $('#searchResults').show(); // Display the search results
+                    $('#searchResults').html(response); // Display the search results
+                    updateReviewsCount('Search: ' + query);
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        } else {
+            $('#searchResults').html(''); // Clear the search results
+            $('#movies_container').show(); // Show the movies container
+            updateReviewsCount('Movie reviews ({{ movies|length }})');
+        }
+    });
+});
+
+    </script>
+{% endblock %}
