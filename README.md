@@ -16,6 +16,8 @@ Composer package manager is required to download required packages for MovieRewi
 
 Like composer, NPM is required so the node packages can be downloaded and properly installed. Find out about installing npm on https://www.npmjs.com/package/npm
 
+Installed MySQL on your machine. You can use tools like XAMPP/MAMPP
+
 ## Setting up project on your machine
 1. Download project from releases or clone it using git.
 2. Open project directory using favourite text editor. I recommend using Visual Studio Code.
