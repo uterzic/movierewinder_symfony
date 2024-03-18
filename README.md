@@ -24,7 +24,8 @@ Installed MySQL on your machine. You can use tools like XAMPP/MAMPP
 3. Edit .env file (make a connect to your MySQL server)
 4. Using terminal locate project directory and type next commands
 5. `npm install`
-6. `composer install`
+6. `npm run dev`
+7. `composer install`
 5. `symfony console doctrine:database:create` (to create database 'movies')
 6. `symfony console doctrine:migrations:migrate` (to populate 'movies' with tables and columns)
 7. After successful migration run command `symfony console doctrine:fixtures:load` (to load dummy data and try project's functionality)
