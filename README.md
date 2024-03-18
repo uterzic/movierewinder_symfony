@@ -21,15 +21,15 @@ Like composer, NPM is required so the node packages can be downloaded and proper
 2. Open project directory using favourite text editor. I recommend using Visual Studio Code.
 3. Edit .env file (make a connect to your MySQL server)
 4. Using terminal locate project directory and type next commands
-5. npm install
-6. composer install
-5. **symfony console doctrine:database:create** (to create database 'movies')
-6. **symfony console doctrine:migrations:migrate** (to populate 'movies' with tables and columns)
-7. After successful migration run command **symfony console doctrine:fixtures:load** (to load dummy data and try project's functionality)
+5. `npm install`
+6. `composer install`
+5. `symfony console doctrine:database:create` (to create database 'movies')
+6. `symfony console doctrine:migrations:migrate` (to populate 'movies' with tables and columns)
+7. After successful migration run command `symfony console doctrine:fixtures:load` (to load dummy data and try project's functionality)
 
 ## Starting MovieRewinder
 After completing the setting up steps you are ready to visit and try MovieRewinder. 
-Start symfony's server using **symfony start:server** command and goto URL addres server has provided. **e.g. 127.0.0.1:8000/**
+Start symfony's server using `**symfony start:server**` command and goto URL addres server has provided. `e.g. 127.0.0.1:8000`
 I hope this project will give you ideas for your projects and help you understand Symfony better on your developer journey.
 
 Thanks and enjoy!
