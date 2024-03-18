@@ -10,13 +10,13 @@ MovieRewinder is a web application that allows users to explore, rate, and revie
 
 
 ## Prerequisites
-Symfony CLI is needed in order to successfuly prepare and start the project. It can be downloaded from Symfony's official website **https://symfony.com/download**
+`Symfony CLI` is needed in order to successfuly prepare and start the project. It can be downloaded from Symfony's official website **https://symfony.com/download**
 
-Composer package manager is required to download required packages for MovieRewinder. You can find out more about composer instalation on https://getcomposer.org/
+`Composer` package manager is required to download required packages for MovieRewinder. You can find out more about composer instalation on https://getcomposer.org/
 
-Like composer, NPM is required so the node packages can be downloaded and properly installed. Find out about installing npm on https://www.npmjs.com/package/npm
+Like composer, `npm` is required so the node packages can be downloaded and properly installed. Find out about installing npm on https://www.npmjs.com/package/npm
 
-Installed MySQL on your machine is required. You can use tools like MAMP for Mac or XAMPP for Windows.
+Installed `MySQL` on your machine is required. You can use tools like MAMP for Mac or XAMPP for Windows.
 
 ## Setting up project on Mac
 1. Download project from releases or clone it using git.
