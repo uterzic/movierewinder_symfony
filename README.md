@@ -16,16 +16,16 @@ Composer package manager is required to download required packages for MovieRewi
 
 Like composer, NPM is required so the node packages can be downloaded and properly installed. Find out about installing npm on https://www.npmjs.com/package/npm
 
-Installed MySQL on your machine. You can use tools like XAMPP/MAMPP
+Installed MySQL on your machine is required. You can use tools like MAMP for Mac or XAMPP for Windows.
 
-## Setting up project on your machine
+## Setting up project on Mac
 1. Download project from releases or clone it using git.
 2. Open project directory using favourite text editor. I recommend using Visual Studio Code.
 3. Edit .env file (make a connect to your MySQL server)
 4. Using terminal locate project directory and type next commands
 5. `npm install`
-6. `npm run dev`
-7. `composer install`
+6. `composer install`
+7. `npm run dev`
 5. `symfony console doctrine:database:create` (to create database 'movies')
 6. `symfony console doctrine:migrations:migrate` (to populate 'movies' with tables and columns)
 7. After successful migration run command `symfony console doctrine:fixtures:load` (to load dummy data and try project's functionality)
