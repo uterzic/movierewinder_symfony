@@ -33,6 +33,12 @@ Installed `MySQL` on your machine is required. You can use tools like MAMP for M
 ## Starting MovieRewinder
 After completing the setting up steps you are ready to visit and try MovieRewinder. 
 Start symfony's server using `symfony start:server` command and goto URL addres server has provided. `e.g. 127.0.0.1:8000`
+
+You can use 3 accounts to login that have been created using DataFixtures:
+1. `uros@admin.com` `adminadmin` - ADMIN_ROLE (administrator)
+2. `uros@author.com` `urosuros` - REVIEWER_ROLE (you can create movie reviews)
+3. `uros@guest.com` `guestguest` - USER_ROLE (guest, can comment, like, explore reviews)
+
 I hope this project will give you ideas for your projects and help you understand Symfony better on your developer journey.
 
 Thanks and enjoy!
